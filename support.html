@@ -39,11 +39,38 @@
     <!-- Content Section -->
     <main class="content-section fade-in" style="margin-top: 40px; margin-bottom: 60px;">
         
-        <div class="glass-panel contact-card">
-            <i class="fa-solid fa-envelope" style="font-size: 3rem; color: var(--neon-purple); margin-bottom: 20px;"></i>
-            <h3>Contact Support</h3>
-            <p>For bug reports, refund inquiries, or general questions, please shoot us an email. Our team usually responds within 24-48 hours.</p>
-            <a href="mailto:support@impostorapp.com" class="contact-email">support@impostorapp.com</a>
+        <div class="glass-panel contact-card" style="text-align: left;">
+            <div style="text-align: center;">
+                <i class="fa-solid fa-envelope" style="font-size: 3rem; color: var(--neon-purple); margin-bottom: 20px;"></i>
+                <h3 style="margin-bottom: 20px;">Contact Support</h3>
+                <p style="margin-bottom: 30px;">For bug reports, refund inquiries, or general questions, please send us a message below. Our team usually responds within 24-48 hours.</p>
+            </div>
+            
+            <form action="https://formsubmit.co/ucnllc@gmail.com" method="POST" class="contact-form">
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_subject" value="New Support Query from Imposter Website">
+                <!-- Set the reply-to address correctly -->
+                <input type="hidden" name="_replyto">
+                <!-- Optionally customize the thank you page to stay on the site, but by default it shows a generic one -->
+                <input type="hidden" name="_next" value="https://bakiucann.github.io/impostorapp-website/support.html">
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="How can we help you?"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+                    Send Message <i class="fa-solid fa-paper-plane" style="margin-left: 8px;"></i>
+                </button>
+            </form>
         </div>
 
         <h2 style="margin-top: 60px; text-align: center;">Frequently Asked Questions</h2>
