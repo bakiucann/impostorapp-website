@@ -1,6 +1,6 @@
-# Impostor Landing Page
+# Imposter Landing Page
 
-This is the static website for the "Impostor" mobile game. It uses deep dark mode, glassmorphism, and neon accents. Built with pure HTML, CSS, and vanilla JS.
+This is the static website for the "Imposter" mobile game. It uses deep dark mode, glassmorphism, and neon accents. Built with pure HTML, CSS, and vanilla JS.
 
 ## How to Deploy to GitHub Pages
 
@@ -12,7 +12,7 @@ Open a terminal in the project folder and run these commands to push your code t
 
 ```bash
 git add .
-git commit -m "Initial commit for Impostor landing page"
+git commit -m "Initial commit for Imposter landing page"
 git branch -M main
 git remote add origin https://github.com/bakiucann/impostorapp-website.git
 git push -u origin main
