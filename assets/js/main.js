@@ -63,4 +63,50 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
   }
+
+  // Support Form AJAX Handling
+  const supportForm = document.getElementById('support-form');
+  const successMsg = document.getElementById('form-success-msg');
+  const submitBtn = document.getElementById('submit-btn');
+  const btnText = document.getElementById('btn-text');
+  const btnIcon = document.getElementById('btn-icon');
+
+  if (supportForm) {
+    supportForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Show loading state
+      btnText.textContent = 'Sending...';
+      btnIcon.classList.remove('fa-paper-plane');
+      btnIcon.classList.add('fa-spinner', 'fa-spin');
+      submitBtn.disabled = true;
+
+      const formData = new FormData(this);
+
+      fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          // Hide form, show success message
+          supportForm.style.display = 'none';
+          successMsg.style.display = 'block';
+        } else {
+          // Handle error (optional, revert text)
+          btnText.textContent = 'Failed. Try Again';
+          btnIcon.classList.remove('fa-spinner', 'fa-spin');
+          submitBtn.disabled = false;
+        }
+      })
+      .catch(error => {
+        btnText.textContent = 'Failed. Try Again';
+        btnIcon.classList.remove('fa-spinner', 'fa-spin');
+        submitBtn.disabled = false;
+      });
+    });
+  }
 });
