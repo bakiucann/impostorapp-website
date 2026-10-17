@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the game | Imposter</title>
+    <meta name="description" content="You've been invited to a game of Imposter. Open the app or download it to join.">
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .join-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
+        .join-card { max-width: 440px; width: 100%; text-align: center; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 24px; padding: 36px 28px; }
+        .join-card h1 { font-family: var(--font-heading); font-size: 2rem; margin: 12px 0 8px; }
+        .join-card p { color: var(--text-muted); line-height: 1.5; }
+        .join-icon { font-size: 2.6rem; color: var(--neon-red); }
+        .join-code { font-family: var(--font-heading); font-size: 2.4rem; letter-spacing: 0.35em; color: var(--neon-cyan); margin: 18px 0 6px; }
+        .join-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+        .join-actions .btn { width: 100%; justify-content: center; }
+        .join-hint { font-size: 0.85rem; margin-top: 18px; }
+    </style>
+</head>
+<body>
+    <main class="join-wrap">
+        <div class="join-card">
+            <i class="fa-solid fa-user-secret join-icon"></i>
+            <h1 data-i18n="title">You're invited!</h1>
+            <p data-i18n="lead">Your friends are playing Imposter on the same Wi-Fi. Join them in seconds.</p>
+            <div class="join-code" id="code" hidden></div>
+            <p class="join-hint" id="code-hint" data-i18n="codeHint" hidden>Game code</p>
+            <div class="join-actions">
+                <a id="open-app" class="btn btn-primary" href="#"><i class="fa-solid fa-right-to-bracket" style="margin-right: 8px;"></i><span data-i18n="open">Open in the app</span></a>
+                <a id="app-store" class="btn btn-secondary" href="https://apps.apple.com/app/id6760088496"><i class="fa-brands fa-apple" style="margin-right: 8px;"></i>App Store</a>
+                <a id="google-play" class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.bakiucan.imposter"><i class="fa-brands fa-google-play" style="margin-right: 8px;"></i>Google Play</a>
+            </div>
+            <p class="join-hint" data-i18n="hint">Don't have the app yet? Install it, connect to the same Wi-Fi, tap Join and enter the code above.</p>
+        </div>
+    </main>
+    <script>
+        (function () {
+            var strings = {
+                tr: {
+                    title: "Davet edildin!",
+                    lead: "Arkadaşların aynı Wi-Fi'da Imposter oynuyor. Saniyeler içinde katıl.",
+                    codeHint: "Oyun kodu",
+                    open: "Uygulamada aç",
+                    hint: "Uygulama yüklü değil mi? Yükle, aynı Wi-Fi'a bağlan, Katıl'a dokun ve yukarıdaki kodu gir."
+                }
+            };
+            var lang = (navigator.language || "en").slice(0, 2).toLowerCase();
+            var t = strings[lang];
+            if (t) {
+                document.documentElement.lang = lang;
+                document.querySelectorAll("[data-i18n]").forEach(function (el) {
+                    var key = el.getAttribute("data-i18n");
+                    if (t[key]) el.textContent = t[key];
+                });
+            }
+
+            var params = new URLSearchParams(window.location.search);
+            var ip = params.get("ip") || "";
+            var code = params.get("code") || "";
+            var openApp = document.getElementById("open-app");
+            if (ip && code) {
+                openApp.href = "imposter://app/join?ip=" + encodeURIComponent(ip) + "&code=" + encodeURIComponent(code);
+            } else {
+                openApp.hidden = true;
+            }
+            if (code) {
+                var codeEl = document.getElementById("code");
+                codeEl.textContent = code;
+                codeEl.hidden = false;
+                document.getElementById("code-hint").hidden = false;
+            }
+
+            var ua = navigator.userAgent || "";
+            if (/iPhone|iPad|iPod/i.test(ua)) {
+                document.getElementById("google-play").hidden = true;
+            } else if (/Android/i.test(ua)) {
+                document.getElementById("app-store").hidden = true;
+            }
+        })();
+    </script>
+</body>
+</html>

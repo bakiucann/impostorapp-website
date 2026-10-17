@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Imposter | Party Word Game</title>
+    <meta name="description" content="Download Imposter, the party game where everyone gets the same secret word except the imposter.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .get-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px; text-align: center; }
+        .get-wrap h1 { font-family: var(--font-heading); font-size: 2rem; margin-bottom: 20px; }
+        .get-actions { display: flex; flex-direction: column; gap: 12px; max-width: 320px; margin: 0 auto; }
+        .get-actions .btn { justify-content: center; }
+    </style>
+    <script>
+        (function () {
+            var ua = navigator.userAgent || "";
+            if (/iPhone|iPad|iPod/i.test(ua)) {
+                window.location.replace("https://apps.apple.com/app/id6760088496");
+            } else if (/Android/i.test(ua)) {
+                window.location.replace("https://play.google.com/store/apps/details?id=com.bakiucan.imposter");
+            }
+        })();
+    </script>
+</head>
+<body>
+    <main class="get-wrap">
+        <div>
+            <h1>Imposter</h1>
+            <div class="get-actions">
+                <a class="btn btn-primary" href="https://apps.apple.com/app/id6760088496"><i class="fa-brands fa-apple" style="margin-right: 8px;"></i>App Store</a>
+                <a class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.bakiucan.imposter"><i class="fa-brands fa-google-play" style="margin-right: 8px;"></i>Google Play</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
